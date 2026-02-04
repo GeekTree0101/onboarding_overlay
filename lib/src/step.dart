@@ -100,6 +100,7 @@ class OnboardingStep {
     this.pulseInnerColor = defaultInnerPulseColor,
     this.pulseOuterColor = defaultOuterPulseColor,
     this.onTapCallback,
+    this.viewPortPadding,
   })  : assert(() {
           if (titleTextColor == null && titleTextStyle == null) {
             final List<DiagnosticsNode> information = <DiagnosticsNode>[
@@ -282,6 +283,8 @@ class OnboardingStep {
 
   final TapCallback? onTapCallback;
 
+  final EdgeInsets? viewPortPadding;
+
   OnboardingStep copyWith({
     Key? key,
     FocusNode? focusNode,
@@ -312,6 +315,7 @@ class OnboardingStep {
     Color? pulseInnerColor,
     Color? pulseOuterColor,
     TapCallback? onTapCallback,
+    EdgeInsets? viewPortPadding,
   }) {
     return OnboardingStep(
       key: key ?? this.key,
@@ -344,6 +348,7 @@ class OnboardingStep {
       pulseInnerColor: pulseInnerColor ?? this.pulseInnerColor,
       pulseOuterColor: pulseOuterColor ?? this.pulseOuterColor,
       onTapCallback: onTapCallback ?? this.onTapCallback,
+      viewPortPadding: viewPortPadding ?? this.viewPortPadding,
     );
   }
 

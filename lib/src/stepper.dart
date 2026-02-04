@@ -295,6 +295,19 @@ class OnboardingStepperState extends State<OnboardingStepper>
             Size(box.size.width * widget.scaleWidth,
                 box.size.height * widget.scaleHeight)
         : Rect.zero;
+
+    final EdgeInsets? viewPortPadding = step.viewPortPadding;
+
+    if (viewPortPadding != null) {
+      final MediaQueryData mq = MediaQuery.of(context);
+      final Rect viewportRect = Rect.fromLTWH(
+        viewPortPadding.left,
+        viewPortPadding.top,
+        mq.size.width - viewPortPadding.left - viewPortPadding.right,
+        mq.size.height - viewPortPadding.top - viewPortPadding.bottom,
+      );
+      widgetRect = widgetRect.intersect(viewportRect);
+    }
     holeTween = RectTween(
       begin: Rect.zero.shift(widgetRect.center),
       end: step.margin.inflateRect(widgetRect),
